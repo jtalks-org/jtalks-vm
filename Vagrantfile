@@ -1,4 +1,4 @@
-# -*- mode: ruby -*-
+#:-*- mode: ruby -*-
 # vi: set ft=ruby :
 
 Vagrant::Config.run do |config|
@@ -28,7 +28,7 @@ Vagrant::Config.run do |config|
   # computers to access the VM, whereas host only networking does not.
   # You can now switch the browser and type [guest port] in your main OS
   # and it will be forwarded to the [host port] of OS in current VV
-  config.vm.forward_port 80, 4567
+  config.vm.forward_port 8080, 4567
 
   config.vm.provision :chef_solo do |chef|
   #configuring soft that's going to be installed
@@ -49,6 +49,7 @@ Vagrant::Config.run do |config|
     #installing software
     chef.add_recipe("java") #OpenJDK is default
     chef.add_recipe("openssl::default")
-    chef.add_recipe("mysql::server")
+    chef.add_recipe("mysql::server") #installs both client and server
+    chef.add_recipe("tomcat7")
   end
 end
