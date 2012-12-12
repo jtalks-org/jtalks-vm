@@ -51,5 +51,6 @@ Vagrant::Config.run do |config|
     chef.add_recipe("openssl::default")
     chef.add_recipe("mysql::server") #installs both client and server
     chef.add_recipe("tomcat7")
+    chef.add_recipe("jtalks::jcommune")
   end
 end
