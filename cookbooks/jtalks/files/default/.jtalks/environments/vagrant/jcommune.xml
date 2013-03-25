@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <Environment name="EH_CACHE_CONFIG" value="file:/usr/share/tomcat/conf/jcommune.ehcache.xml" type="java.lang.String" />
+    <Environment name="JCOMMUNE_DB_USER" value="root" type="java.lang.String" />
+    <Environment name="JCOMMUNE_DB_PASSWORD" value="root" type="java.lang.String" />
+    <Environment name="JCOMMUNE_DB_URL" type="java.lang.String"
+                 value="jdbc:mysql://localhost/jtalks?characterEncoding=UTF-8" />
+
+    <Environment name="SMTP_HOST" value="smtp.mail.ru" type="java.lang.String" />
+    <Environment name="SMTP_PORT" value="25" type="java.lang.String" />
+    <Environment name="MAIL_USERNAME" value="jtalks@inbox.ru" type="java.lang.String" />
+    <Environment name="MAIL_PASSWORD" value="javatalks" type="java.lang.String" />
+</Context>
