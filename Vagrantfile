@@ -26,6 +26,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe("tomcat7")
     chef.add_recipe("python::pip")
     chef.add_recipe("apt")
+    chef.add_recipe("git")
     chef.add_recipe("jtalks::cicd")
   end
 end
