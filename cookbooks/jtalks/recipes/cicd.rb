@@ -1,3 +1,5 @@
+include_recipe "database::mysql"
+
 package "python-dev" do
  action :install
 end
@@ -20,4 +22,14 @@ remote_directory "/home/vagrant/.jtalks" do
   group "vagrant"
   recursive true
   mode 00777
+end
+
+execute "give permissions to vagrant user for tomcat" do
+  command "chmod 777 -Rf /usr/share/tomcat"
+end
+
+mysql_database 'jtalks' do
+  connection ({:host => "localhost", :username => 'root', :password => 'root'})
+  encoding 'utf8'
+  action :create
 end
