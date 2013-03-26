@@ -1,7 +1,7 @@
 Vagrant::Config.run do |config|
   config.vm.box = "precise32"
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
-  config.vm.forward_port 8080, 4567
+  config.vm.forward_port 8080, 4000
 
   config.vm.provision :chef_solo do |chef|
   #configuring soft that's going to be installed

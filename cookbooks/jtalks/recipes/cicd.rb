@@ -28,6 +28,10 @@ execute "add current user to tomcat group so that it has permissions" do
   command "usermod -a -G tomcat vagrant"
 end
 
+execute "give write permissions to vagrant for tomcat" do
+  command "chmod g+rw /usr/share/tomcat -R"
+end
+
 mysql_database 'jtalks' do
   connection ({:host => "localhost", :username => 'root', :password => 'root'})
   encoding 'utf8'
