@@ -24,8 +24,8 @@ remote_directory "/home/vagrant/.jtalks" do
   mode 00777
 end
 
-execute "give permissions to vagrant user for tomcat" do
-  command "chmod 777 -Rf /usr/share/tomcat"
+execute "add current user to tomcat group so that it has permissions" do
+  command "usermod -a -G tomcat vagrant"
 end
 
 mysql_database 'jtalks' do

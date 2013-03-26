@@ -102,7 +102,7 @@ template "#{tc7target}/tomcat/conf/server.xml" do
 end
 
 # Start service
-service "tomcat7" do
-    service_name "tomcat7"
-    action :start
-end
+#service "tomcat7" do
+#    service_name "tomcat7"
+#    action :start
+#end
