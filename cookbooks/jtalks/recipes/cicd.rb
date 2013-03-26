@@ -21,7 +21,7 @@ remote_directory "/home/vagrant/.jtalks" do
   owner "vagrant"
   group "vagrant"
   recursive true
-  mode 00777
+  mode 00750
 end
 
 execute "add current user to tomcat group so that it has permissions" do

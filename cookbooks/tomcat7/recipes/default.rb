@@ -16,6 +16,7 @@ tc7url = "http://archive.apache.org/dist/tomcat/tomcat-7/v#{tc7ver}/bin/#{tc7tar
 tc7target = node["tomcat7"]["target"]
 tc7user = node["tomcat7"]["user"]
 tc7group = node["tomcat7"]["group"]
+tc7java_opts = "export JAVA_OPTS=\\\$JAVA_OPTS'" + node["tomcat7"]["java_options"] +"'"
 
 # Get the tomcat binary 
 remote_file "/tmp/#{tc7tarball}" do
@@ -101,8 +102,20 @@ template "#{tc7target}/tomcat/conf/server.xml" do
     mode "0644"
 end
 
-# Start service
-#service "tomcat7" do
-#    service_name "tomcat7"
-#    action :start
-#end
+directory "#{tc7target}/tomcat/conf/Catalina" do
+  owner "#{tc7user}"
+  group "#{tc7group}"
+  mode "0755"
+  action :create
+end
+
+directory "#{tc7target}/tomcat/conf/Catalina/localhost" do
+  owner "#{tc7user}"
+  group "#{tc7group}"
+  mode "0755"
+  action :create
+end
+
+execute "set JAVA_OPTS" do
+  command "sed -i \"2i#{tc7java_opts}\" #{tc7target}/tomcat/bin/startup.sh"
+end
