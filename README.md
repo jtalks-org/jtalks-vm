@@ -20,4 +20,9 @@ In order to start one of JTalks component, you need to go through several steps.
 * Now if everything is green (if not, read below), go to your browser and run http://localhost:4000/jcommune or http://localhost:4000/poulpe and here we are.
 * The configuration is kept in `~/.jtalks` and can be changed if needed. For more information on how to install and use jtalks scripts see [JTalks CICD project](https://github.com/jtalks-org/jtalks-cicd)
 
+####Shutdown environment
+* Log out from virtual box, you still should be in `jtalks-vm` folder.
+* You can either destroy everything wiping off databases by using `vagrant destroy`. After that you'll be able to start a brand new env again by running `vagrant up`
+* Or you can simply shut down environment `vagrant suspend` and to continue work with it: `vagrant resume`
+
 If you have problems, please contact us: project\[at\]jtalks\[.\]org
