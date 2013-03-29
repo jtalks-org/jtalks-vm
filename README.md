@@ -7,7 +7,7 @@ In order to start one of JTalks component, you need to go through several steps.
 ####Install Software
 * Install [VirtualBox](https://www.virtualbox.org/) which is an Oracle driven tool for starting virtual environments. Vagrant started to support VMWare, but we didn't test our scripts with it.
 * Install [Vagrant](http://www.vagrantup.com). It's an extremely simple tool that can start virtual environment and install software there using Chef or Puppet scripts.
-* Download this project either in zip format or grab sources using Git. Unpack if needed an step into the folder.
+* Download this project either in zip format or grab sources using Git. Unpack if needed and step into the folder.
 
 ####Start virtual environment
 * `vagrant up` - this starts your env and runs Chef scripts. This may take a lot of time especially first time because it downloads software and virtual image from the internet.
