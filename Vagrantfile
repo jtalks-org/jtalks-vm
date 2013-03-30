@@ -15,9 +15,13 @@ Vagrant::Config.run do |config|
         :server_root_password => "root",
         :server_repl_password => "no_replication",
         :server_debian_password => "root"
+      },
+      :resolver => {
+        :nameservers => ["8.8.8.8", "8.8.4.4"]
       }
     })
     #updating package caches to install fresh soft
+    chef.add_recipe("resolver")
     chef.add_recipe("apt-get")
     #installing software
     chef.add_recipe("java")
