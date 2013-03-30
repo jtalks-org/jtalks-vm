@@ -24,7 +24,7 @@ if node['resolver']['nameservers'].empty? || node['resolver']['nameservers'][0].
   Chef::Log.info("#{cookbook_name}::#{recipe_name} will exit to prevent a potential breaking change in /etc/resolv.conf.")
   return
 else
-  template "/etc/resolvconf/resolv.conf.d/head" do
+  template "/etc/resolvconf/resolv.conf.d/base" do
     source "resolv.conf.erb"
     owner "root"
     group "root"
