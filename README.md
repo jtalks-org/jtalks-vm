@@ -11,7 +11,7 @@ In order to start one of JTalks component, you need to go through several steps.
 
 ####Start virtual environment
 * `vagrant up` - this starts your env and runs Chef scripts. This may take a lot of time especially first time because it downloads software and virtual image from the internet.
-* `vagrant ssh` - log into the just created virtual machine. For _Windows_ users you'll have to use [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log in via SSH. Use `Host: localhost`, `Port: 2222`.
+* `vagrant ssh` - log into the just created virtual machine. For _Windows_ users you'll have to use [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log in via SSH. Use `Host: localhost`, `Port: 2222`. User: `vagrant`, password: `vagrant`.
 
 ####Start JCommune or Poulpe
 * `jtalks deploy --environment vagrant --project jcommune --build 680` - this is just an example that start 660th build of [JCommune project](https://github.com/jtalks-org/jcommune).
