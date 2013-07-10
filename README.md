@@ -27,6 +27,7 @@ In order to start one of JTalks component, you need to go through several steps.
 
 ---
 
+#### Using cookbooks on non-virtualized envs
 The very same cookbooks could be used on usual servers that don't leverage virtualization. E.g. we use them in order to install software, see folder `roles`. In order to install everything onto the machine, feel free to leverage [install-chef](utils/install-chef.sh) script. After installation you can go to `/var/chef/jtalks-vm` and install software using server roles, e.g.: `sudo chef-solo -j roles/jtalks-servers.json`
 
 If you have problems, please contact us: project\[at\]jtalks\[.\]org
