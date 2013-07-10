@@ -24,6 +24,7 @@ In order to start one of JTalks component, you need to go through several steps.
 * Log out from virtual box, you still should be in `jtalks-vm` folder.
 * You can either destroy everything wiping off databases by using `vagrant destroy`. After that you'll be able to start a brand new env again by running `vagrant up`
 * Or you can simply shut down environment `vagrant suspend` and to continue work with it: `vagrant resume`
+
 ---
 
 The very same cookbooks could be used on usual servers that don't leverage virtualization. E.g. we use them in order to install software, see folder `roles`. In order to install everything onto the machine, feel free to leverage [install-chef](utils/install-chef.sh) script. After installation you can go to `/var/chef/jtalks-vm` and install software using server roles, e.g.: `sudo chef-solo -j roles/jtalks-servers.json`
