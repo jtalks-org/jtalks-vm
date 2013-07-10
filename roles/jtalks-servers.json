@@ -1,8 +1,9 @@
 {
   "java":{
-    "install_flavor" => "oracle",
+    "install_flavor": "oracle",
     "oracle" : {"accept_oracle_download_terms":"true"},
     "jdk_version": "7"
   },
-  "run_list": ["add_recipe[java]"]
+  "run_list": ["recipe[java]"]
 }
+
