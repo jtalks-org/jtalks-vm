@@ -18,7 +18,20 @@ Vagrant::Config.run do |config|
       },
       :resolver => {
         :nameservers => ["8.8.8.8", "8.8.4.4"]
+      },
+      :rbenv => {
+        :user_installs => [{
+          :user => "vagrant",
+          :rubies => ["jruby-1.7.4"],
+          :global => "jruby-1.7.4",
+          :gems => {
+            "jruby-1.7.4" => [
+              {:name => "warbler"}
+            ]
+          }
+        }]
       }
+
     })
     #updating package caches to install fresh soft
     chef.add_recipe("resolver")
@@ -31,6 +44,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe("python::pip")
     chef.add_recipe("apt")
     chef.add_recipe("git")
+    chef.add_recipe("rbenv::user")
     chef.add_recipe("jtalks::cicd")
   end
 end
