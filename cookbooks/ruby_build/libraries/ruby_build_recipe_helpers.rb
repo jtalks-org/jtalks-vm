@@ -1,8 +1,10 @@
 #
-# Cookbook Name:: rbenv
-# Recipe:: system
+# Cookbook Name:: ruby_build
+# Library:: Chef::RubyBuild::RecipeHelpers
 #
-# Copyright 2010, 2011 Fletcher Nichol
+# Author:: Fletcher Nichol <fnichol@nichol.ca>
+#
+# Copyright 2011, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,23 +19,21 @@
 # limitations under the License.
 #
 
-include_recipe "rbenv::system_install"
+class Chef
+  module RubyBuild
+    module RecipeHelpers
+      def build_upgrade_strategy(strategy)
+        if strategy.nil? || strategy == false
+          "none"
+        else
+          strategy
+        end
+      end
 
-Array(node['rbenv']['rubies']).each do |rubie|
-  rbenv_ruby rubie
-end
-
-if node['rbenv']['global']
-  rbenv_global node['rbenv']['global']
-end
-
-node['rbenv']['gems'].each_pair do |rubie, gems|
-  Array(gems).each do |gem|
-    rbenv_gem gem['name'] do
-      rbenv_version rubie
-
-      %w{version action options source}.each do |attr|
-        send(attr, gem[attr]) if gem[attr]
+      def mac_with_no_homebrew
+        node['platform'] == 'mac_os_x' &&
+          Chef::Platform.find_provider_for_node(node, :package) !=
+          Chef::Provider::Package::Homebrew
       end
     end
   end

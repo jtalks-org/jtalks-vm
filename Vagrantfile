@@ -1,6 +1,6 @@
 Vagrant::Config.run do |config|
-  config.vm.box = "precise32"
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.forward_port 8080, 4000
 
   config.vm.provision :chef_solo do |chef|
@@ -44,6 +44,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe("python::pip")
     chef.add_recipe("apt")
     chef.add_recipe("git")
+    chef.add_recipe("ruby_build")
     chef.add_recipe("rbenv::user")
     chef.add_recipe("jtalks::cicd")
   end

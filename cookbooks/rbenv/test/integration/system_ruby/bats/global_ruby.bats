@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-global_ruby="1.9.3-p429"
+global_ruby="1.9.3-p362"
 https_url="https://google.com"
 
 setup() {
@@ -10,7 +10,7 @@ setup() {
 @test "installs $global_ruby" {
   run rbenv versions --bare
   [ $status -eq 0 ]
-  [ $(echo "$output" | grep "^$global_ruby$") = "$global_ruby" ]
+  [ $output = "$global_ruby" ]
 }
 
 @test "sets $global_ruby as the global Ruby" {

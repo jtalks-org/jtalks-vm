@@ -1,6 +1,4 @@
-# <a name="title"></a> rbenv Chef Cookbook
-
-[![Build Status](https://secure.travis-ci.org/fnichol/chef-rbenv.png?branch=master)](http://travis-ci.org/fnichol/chef-rbenv)
+# <a name="title"></a> chef-rbenv [![Build Status](https://secure.travis-ci.org/fnichol/chef-rbenv.png?branch=master)](http://travis-ci.org/fnichol/chef-rbenv)
 
 ## <a name="description"></a> Description
 
@@ -30,7 +28,7 @@ add a user hash to the `user_installs` attribute list. For example:
         'global'  => '1.9.3-p0',
         'gems'    => {
           '1.9.3-p0'    => [
-            { 'name'    => 'bundler',
+            { 'name'    => 'bundler'
               'version' => '1.1.rc.5'
             },
             { 'name'    => 'rake' }
@@ -81,7 +79,7 @@ in your run\_list can help with resolving the *chef-solo* binary on subsequent
 
 ### <a name="requirements-chef"></a> Chef
 
-Tested on 11.4.4 but newer and older version should work just
+Tested on 0.10.4 and 0.10.8 but newer and older version should work just
 fine. File an [issue][issues] if this isn't the case.
 
 ### <a name="requirements-platform"></a> Platform
@@ -89,7 +87,7 @@ fine. File an [issue][issues] if this isn't the case.
 The following platforms have been tested with this cookbook, meaning that
 the recipes and LWRPs run on these platforms without error:
 
-* ubuntu (10.04/12.04)
+* ubuntu (10.04/10.10/11.04/11.10)
 * debian (6.0)
 * freebsd
 * redhat
@@ -161,7 +159,7 @@ To reference the Git version:
     END_OF_CHEFFILE
     librarian-chef install
 
-### <a name="installation-platform"></a> From the Community Site
+### <a name="installation-platform"></a> From the Opscode Community Platform
 
 This cookbook is not currently available on the site due to the flat
 namespace for cookbooks.
@@ -230,7 +228,7 @@ example, to pin rbenv to a specific release:
 
     node.default['ruby_build']['git_ref'] = "v0.2.1"
 
-The default is `"v0.4.0"`.
+The default is `"master"`.
 
 ### <a name="attributes-upgrade"></a> upgrade
 
@@ -260,16 +258,6 @@ in your run\_list for the `rbenv_ruby` LWRP to work properly. For example:
 
 The default is an empty array: `[]`.
 
-Additional environment variables can be passed to ruby_build via the environment variable.
-For example:
-
-    node.default['rbenv']['rubies'] = [ "1.9.3-p0", "jruby-1.6.5",
-      {
-      :name => '1.9.3-327',
-      :environment => { 'CFLAGS' => '-march=native -O2 -pipe' }
-      }
-    ]
-
 ### <a name="attributes-user-rubies"></a> user_rubies
 
 A list of additional system-wide rubies to be built and installed (using the
@@ -280,15 +268,6 @@ For example:
 
 The default is an empty array: `[]`.
 
-Additional environment variables can be passed to ruby_build via the environment variable.
-For example:
-
-    node.default['rbenv']['user_rubies'] = [ "1.8.7-p352",
-      {
-      :name => '1.9.3-327',
-      :environment => { 'CFLAGS' => '-march=native -O2 -pipe' }
-      }
-    ]
 ### <a name="attributes-gems"></a> gems
 
 A hash of gems to be installed into arbitrary rbenv-managed rubies system wide.
@@ -487,7 +466,7 @@ notifies it.
       <td>
         A version of Ruby being managed by rbenv.
       </td>
-      <td><code>nil</code></td>
+      <td><code>"global"</code></td>
     </tr>
     <tr>
       <td>root_path</td>
@@ -891,14 +870,7 @@ in the run list to perform the builds.
       <td>definition</td>
       <td>
         <b>Name attribute:</b> the name of a built-in definition<sup>(1)</sup>
-        or the name of the ruby installed by a ruby-build defintion file<sup>(2)</sup>
-      </td>
-      <td><code>nil</code></td>
-    </tr>
-    <tr>
-      <td>definition_file</td>
-      <td>
-        The path to a ruby-build definition file.  
+        or the path to a ruby-build definition file.
       </td>
       <td><code>nil</code></td>
     </tr>
@@ -924,7 +896,6 @@ in the run list to perform the builds.
 </table>
 
 1. [built-in definition][rb_definitions]
-2. the recipe checks for the existence of the naming attribute under the root_path, and if not found invokes ruby-build with the definition file as an argument
 
 #### <a name="lwrps-rbr-examples"></a> Examples
 
@@ -943,12 +914,6 @@ usage.
 
     rbenv_ruby "ree-1.8.7-2011.03" do
       action :reinstall
-    end
-
-##### Install a custom ruby
-
-    rbenv_ruby "2.0.0p116" do
-      definition_file "/usr/local/rbenv/custom/2.0.0p116"
     end
 
 ## <a name="mac-system-note"></a> System-Wide Mac Installation Note
@@ -987,12 +952,12 @@ limitations under the License.
 [berkshelf]:        http://berkshelf.com/
 [chef_repo]:        https://github.com/opscode/chef-repo
 [cheffile]:         https://github.com/applicationsonline/librarian/blob/master/lib/librarian/chef/templates/Cheffile
-[gem_package_options]: http://docs.opscode.com/resource_gem_package.html#attributes
+[gem_package_options]: http://wiki.opscode.com/display/chef/Resources#Resources-GemPackageOptions
 [kgc]:              https://github.com/websterclay/knife-github-cookbooks#readme
 [librarian]:        https://github.com/applicationsonline/librarian#readme
-[lwrp]:             http://docs.opscode.com/lwrp_custom.html
+[lwrp]:             http://wiki.opscode.com/display/chef/Lightweight+Resources+and+Providers+%28LWRP%29
 [mac_profile_d]:    http://hints.macworld.com/article.php?story=20011221192012445
-[package_resource]: http://docs.opscode.com/resource_package.html
+[package_resource]: http://wiki.opscode.com/display/chef/Resources#Resources-Package
 [rb_readme]:        https://github.com/sstephenson/ruby-build#readme
 [rb_definitions]:   https://github.com/sstephenson/ruby-build/tree/master/share/ruby-build
 [rbenv_site]:       https://github.com/sstephenson/rbenv
@@ -1001,7 +966,7 @@ limitations under the License.
 [rbenv_3_6]:        https://github.com/sstephenson/rbenv#section_3.6
 [ruby_build_cb]:    http://community.opscode.com/cookbooks/ruby_build
 [ruby_build_site]:  https://github.com/sstephenson/ruby-build
-[script_resource]:  http://docs.opscode.com/resource_script.html
+[script_resource]:  http://wiki.opscode.com/display/chef/Resources#Resources-Script
 
 [fnichol]:      https://github.com/fnichol
 [repo]:         https://github.com/fnichol/chef-rbenv
