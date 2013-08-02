@@ -23,10 +23,8 @@ include Chef::Rbenv::ScriptHelpers
 
 def load_current_resource
   @rubie      = new_resource.definition
-  @definition_file = new_resource.definition_file
   @root_path  = new_resource.root_path
   @user       = new_resource.user
-  @environment = new_resource.environment
 end
 
 action :install do
@@ -55,16 +53,13 @@ def perform_install
     # bypass block scoping issues
     rbenv_user    = @user
     rubie         = @rubie
-    definition    = @definition_file || @rubie
     rbenv_prefix  = @root_path
-    rbenv_env     = @environment
-    command       = %{rbenv install #{definition}}
+    command       = %{rbenv install #{rubie}}
 
     rbenv_script "#{command} #{which_rbenv}" do
       code        command
       user        rbenv_user    if rbenv_user
       root_path   rbenv_prefix  if rbenv_prefix
-      environment rbenv_env     if rbenv_env
 
       action      :nothing
     end.run_action(:run)
@@ -85,7 +80,7 @@ def ruby_installed?
 end
 
 def ruby_build_missing?
-  ! run_context.loaded_recipe?("ruby_build")
+  ! node.recipe?("ruby_build")
 end
 
 def install_ruby_dependencies

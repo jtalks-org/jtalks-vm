@@ -6,5 +6,3 @@ tmp/
 .vagrant
 .jamie/
 .jamie.local.yml
-.kitchen/
-.kitchen.local.yml
