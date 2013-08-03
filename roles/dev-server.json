@@ -18,5 +18,5 @@
       }
    },
 
-   "run_list": ["recipe[java]", "recipe[ruby_build]"]
+   "run_list": ["recipe[java]", "recipe[ruby_build]", "recipe[rbenv::user]"]
  }
