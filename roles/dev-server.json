@@ -1,0 +1,22 @@
+ {
+   "java":{
+     "install_flavor": "oracle",
+     "oracle" : {"accept_oracle_download_terms":"true"},
+     "jdk_version": "7" 
+   },  
+   "rbenv":{
+      "user_installs":{
+         "user": "dev",
+         "rubies": ["jruby-1.7.4"],
+         "global": "jruby-1.7.4",
+         "gems":{
+           "jruby-1.7.4":[
+              {"name":"warbler"},
+              {"name":"bundler"}
+           ]
+         }
+      }
+   },
+
+   "run_list": ["recipe[java]", "recipe[ruby_build]"]
+ }
