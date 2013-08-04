@@ -7,7 +7,7 @@
    "rbenv":{
       "user_installs":[{
          "user": "jenkins",
-         "rubies": "jruby-1.7.4",
+         "rubies": ["jruby-1.7.4"],
          "global": "jruby-1.7.4",
          "gems":{
            "jruby-1.7.4":[
