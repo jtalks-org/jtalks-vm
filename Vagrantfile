@@ -8,7 +8,8 @@ Vagrant::Config.run do |config|
     chef.json.merge!({
       :java => {
         "install_flavor" => "oracle",
-        :oracle => {"accept_oracle_download_terms" => true}
+        :oracle => {"accept_oracle_download_terms" => true},
+        :jdk_version => "7"
        },
       :mysql=> {
         :client => { :version => "5.5.28" },
