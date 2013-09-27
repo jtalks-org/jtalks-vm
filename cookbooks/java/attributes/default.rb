@@ -43,7 +43,7 @@ when "windows"
   default['java']['windows']['package_name'] = "Java(TM) SE Development Kit 7 (64-bit)"
 when "debian"
   default['java']['java_home'] = "/usr/lib/jvm/default-java"
-  default['java']['openjdk_packages'] = ["openjdk-#{node['java']['jdk_version']}-jdk", "default-jre-headless"]
+  default['java']['openjdk_packages'] = ["openjdk-#{node['java']['jdk_version']}-jdk", "openjdk-#{node['java']['jdk_version']}-jre-headless"]
 when "smartos"
   default['java']['java_home'] = "/opt/local/java/sun6"
   default['java']['openjdk_packages'] = ["sun-jdk#{node['java']['jdk_version']}", "sun-jre#{node['java']['jdk_version']}"]
@@ -52,11 +52,15 @@ else
   default['java']['openjdk_packages'] = ["openjdk-#{node['java']['jdk_version']}-jdk"]
 end
 
-if node['java']['install_flavor'] == 'ibm'
+case node['java']['install_flavor']
+when 'ibm'
   default['java']['ibm']['url'] = nil
   default['java']['ibm']['checksum'] = nil
   default['java']['ibm']['accept_ibm_download_terms'] = false
   default['java']['java_home'] = "/opt/ibm/java"
+when 'oracle_rpm'
+  default['java']['oracle_rpm']['type'] = 'jdk'
+  default['java']['java_home'] = "/usr/java/latest"
 end
 
 # if you change this to true, you can download directly from Oracle
