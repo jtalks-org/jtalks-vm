@@ -1,3 +1,8 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = 'shared-cache'
+  config.cache.auto_detect = true
+#  config.cache.enable_nfs  = true
+end
 Vagrant::Config.run do |config|
   config.vm.box = "precise32"
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
@@ -19,19 +24,6 @@ Vagrant::Config.run do |config|
       },
       :resolver => {
         :nameservers => ["8.8.8.8", "8.8.4.4"]
-      },
-      :rbenv => {
-        :user_installs => [{
-          :user => "vagrant",
-          :rubies => ["jruby-1.7.4"],
-          :global => "jruby-1.7.4",
-          :gems => {
-            "jruby-1.7.4" => [
-              {:name => "warbler"},
-              {:name => "bundler"}
-            ]
-          }
-        }]
       }
 
     })
@@ -46,8 +38,6 @@ Vagrant::Config.run do |config|
     chef.add_recipe("python::pip")
     chef.add_recipe("apt")
     chef.add_recipe("git")
-    chef.add_recipe("ruby_build")
-    chef.add_recipe("rbenv::user")
     chef.add_recipe("jtalks::cicd")
   end
 end
