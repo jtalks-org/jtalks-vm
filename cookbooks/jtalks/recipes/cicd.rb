@@ -8,6 +8,9 @@ package "libmysqlclient-dev" do
  action :install
 end
 
+python_pip "http://cdn.mysql.com/Downloads/Connector-Python/mysql-connector-python-1.1.4.zip" do
+  action :install
+end
 python_pip "jtalks-cicd" do
   action :install
 end
