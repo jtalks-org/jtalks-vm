@@ -1,7 +1,11 @@
 def plugin(name, version = nil, opts = {})
   @vagrant_home ||= opts[:home_path] || ENV['VAGRANT_HOME'] || "#{ENV['HOME']}/.vagrant.d"
-  FileUtils.touch("#@vagrant_home/plugins.json")
-  plugins = JSON.parse(File.read("#@vagrant_home/plugins.json"))
+  plugins_file="#@vagrant_home/plugins.json"
+  FileUtils.touch(plugins_file)
+  if File.zero?(plugins_file)
+    File.write(plugins_file, '{"version":"1","installed":{}}')
+  end
+  plugins = JSON.parse(File.read(plugins_file))
 
   if !plugins['installed'].include?(name) || (version && !version_matches(name, version))
     cmd = "vagrant plugin install"
@@ -9,7 +13,7 @@ def plugin(name, version = nil, opts = {})
     cmd << " --plugin-source #{opts[:source]}" if opts[:source]
     cmd << " --plugin-version #{version}" if version
     cmd << " #{name}"
-
+    puts "#{cmd}..."
     result = %x(#{cmd})
   end
 end
@@ -22,12 +26,11 @@ def version_matches(name, version)
 end
 
 # With version/source: plugin 'vagrant-berkshelf', '1.3.2', source: 'https://rubygems.org'
+plugin 'vagrant-berkshelf'
 plugin 'vagrant-cachier'
 plugin 'vagrant-omnibus'
 
-
 Vagrant.configure("2") do |config|
-  config.vm.box = 'shared-cache'
   config.cache.auto_detect = true
 #  config.cache.enable_nfs  = true
 end
