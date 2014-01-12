@@ -1,5 +1,6 @@
 def plugin(name, version = nil, opts = {})
   @vagrant_home ||= opts[:home_path] || ENV['VAGRANT_HOME'] || "#{ENV['HOME']}/.vagrant.d"
+  FileUtils.touch("#@vagrant_home/plugins.json")
   plugins = JSON.parse(File.read("#@vagrant_home/plugins.json"))
 
   if !plugins['installed'].include?(name) || (version && !version_matches(name, version))
