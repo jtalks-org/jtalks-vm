@@ -1,3 +1,12 @@
+Vagrant.configure("2") do |config|
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.auto_detect = true
+    # If you are using VirtualBox, you might want to enable NFS for shared folders
+    # config.cache.enable_nfs  = true
+  end
+end
+
+
 Vagrant::Config.run do |config|
   config.vm.box = "precise32"
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
