@@ -14,6 +14,7 @@ Vagrant::Config.run do |config|
 
   config.vm.provision :chef_solo do |chef|
   #configuring soft that's going to be installed
+    #chef.log_level = :debug    
     chef.json.merge!({
       :java => {
         "install_flavor" => "oracle",
@@ -33,14 +34,13 @@ Vagrant::Config.run do |config|
     })
     #updating package caches to install fresh soft
     chef.add_recipe("resolver")
-    chef.add_recipe("apt-get")
+    chef.add_recipe("apt")
     #installing software
     chef.add_recipe("java")
     chef.add_recipe("openssl::default")
     chef.add_recipe("mysql::server") #installs both client and server
     chef.add_recipe("tomcat7")
     chef.add_recipe("python::pip")
-    chef.add_recipe("apt")
     chef.add_recipe("git")
     chef.add_recipe("jtalks::cicd")
   end
