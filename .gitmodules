@@ -19,3 +19,6 @@
 [submodule "cookbooks/openssl"]
 	path = cookbooks/openssl
 	url = https://github.com/opscode-cookbooks/openssl
+[submodule "cookbooks/python"]
+	path = cookbooks/python
+	url = https://github.com/poise/python
