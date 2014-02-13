@@ -7,3 +7,6 @@
 [submodule "cookbooks/database"]
 	path = cookbooks/database
 	url = https://github.com/opscode-cookbooks/database
+[submodule "cookbooks/git"]
+	path = cookbooks/git
+	url = https://github.com/opscode-cookbooks/git
