@@ -13,3 +13,6 @@
 [submodule "cookbooks/java"]
 	path = cookbooks/java
 	url = https://github.com/socrata-cookbooks/java
+[submodule "cookbooks/mysql"]
+	path = cookbooks/mysql
+	url = https://github.com/opscode-cookbooks/mysql
