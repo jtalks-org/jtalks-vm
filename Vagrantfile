@@ -17,10 +17,18 @@ Vagrant::Config.run do |config|
     #chef.log_level = :debug    
     chef.json.merge!({
       :java => {
-        "install_flavor" => "oracle",
+        :install_flavor => "oracle",
         :oracle => {"accept_oracle_download_terms" => true},
-        :jdk_version => "7"
-       },
+        :jdk_version => "7",
+        :jdk => {
+          :"7" => {
+            :i586 => {
+              :url => "http://download.oracle.com/otn-pub/java/jdk/7u25-b15/jdk-7u25-linux-i586.tar.gz",
+              :checksum => "dd89b20afa939992bb7fdc44837fa64f0a98d7ee1e5706fe8a2d9e2247ba6de7"
+            }
+          }
+        }
+      },
       :mysql=> {
         :client => { :version => "5.5.28" },
         :server_root_password => "root",
