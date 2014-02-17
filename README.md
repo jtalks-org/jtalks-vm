@@ -14,9 +14,9 @@ In order to start one of JTalks component, you need to go through several steps.
 * `vagrant ssh` - log into the just created virtual machine. For _Windows_ users you'll have to use [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) to log in via SSH. Use `Host: localhost`, `Port: 2222`. User: `vagrant`, password: `vagrant`.
 
 ####Start JCommune or Poulpe
-* `jtalks deploy --environment vagrant --project jcommune --build 680` - this is just an example that start 660th build of [JCommune project](https://github.com/jtalks-org/jcommune).
+* `jtalks deploy --environment vagrant --project jcommune --build 2037` - this is just an example that start 660th build of [JCommune project](https://github.com/jtalks-org/jcommune).
  * Instead of `jcommmune` you can specify `poulpe` to start [Poulpe](https://github.com/jtalks-org/poulpe).
- * Instead of `660` you need to put a build you'd like to use, a list of them can be found in our [Deployment Pipeline Repository](http://repo.jtalks.org/content/repositories/deployment-pipeline/deployment-pipeline/). Every build has a suffix following major and minor version of the build.
+ * Instead of `2037` you need to put a build you'd like to use, a list of them can be found in our [Deployment Pipeline Repository](http://repo.jtalks.org/content/repositories/deployment-pipeline/deployment-pipeline/). Every build has a suffix following major and minor version of the build.
 * Now if everything is green (if not, read below), go to your browser and run http://localhost:4000/jcommune or http://localhost:4000/poulpe and here we are.
 * The configuration is kept in `~/.jtalks` and can be changed if needed. For more information on how to install and use jtalks scripts see [JTalks CICD project](https://github.com/jtalks-org/jtalks-cicd)
 
