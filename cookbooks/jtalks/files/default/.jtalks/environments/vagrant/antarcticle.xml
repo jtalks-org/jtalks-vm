@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <Environment name="ANTARCTICLE_DB_USER" value="root" type="java.lang.String" />
+    <Environment name="ANTARCTICLE_DB_PASSWORD" value="root" type="java.lang.String" />
+    <Environment name="ANTARCTICLE_DB_URL" type="java.lang.String"
+                 value="jdbc:mysql://localhost/antarcticle?characterEncoding=UTF-8" />
+   <Environment name="ANTARCTICLE_DB_DRIVER" value="com.mysql.jdbc.Driver" type="java.lang.String" />
+   <Environment name="ANTARCTICLE_POULPE_URL" value="http://localhost:8080/poulpe" type="java.lang.String" />
+</Context>

@@ -8,7 +8,7 @@ package "libmysqlclient-dev" do
  action :install
 end
 
-python_pip "http://cdn.mysql.com/Downloads/Connector-Python/mysql-connector-python-1.1.4.zip" do
+python_pip "http://cdn.mysql.com/Downloads/Connector-Python/mysql-connector-python-1.1.6.zip#md5=026e4a4b8731da33d73f0542349594fd" do
   action :install
 end
 python_pip "jtalks-cicd" do
@@ -40,3 +40,10 @@ mysql_database 'jtalks' do
   encoding 'utf8'
   action :create
 end
+
+mysql_database 'antarcticle' do
+  connection ({:host => "localhost", :username => 'root', :password => 'root'})
+  encoding 'utf8'
+  action :create
+end
+
