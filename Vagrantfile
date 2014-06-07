@@ -38,6 +38,7 @@ Vagrant::Config.run do |config|
     #updating package caches to install fresh soft
     chef.add_recipe("resolver")
     chef.add_recipe("apt-get")
+    chef.add_recipe("nginx")
     #installing software
     chef.add_recipe("java")
     chef.add_recipe("openssl::default")
