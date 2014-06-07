@@ -4,6 +4,9 @@ Vagrant.configure("2") do |config|
     # If you are using VirtualBox, you might want to enable NFS for shared folders
     # config.cache.enable_nfs  = true
   end
+  if Vagrant.has_plugin?("vagrant-omnibus")
+    config.omnibus.chef_version = '11.12.8'
+  end
 end
 
 
@@ -13,7 +16,8 @@ Vagrant::Config.run do |config|
   config.vm.forward_port 8080, 4000
 
   config.vm.provision :chef_solo do |chef|
-  #configuring soft that's going to be installed
+    chef.cookbooks_path = ['cookbooks', 'cookbooks-dependencies']
+    #configuring soft that's going to be installed
     chef.json.merge!({
       :java => {
         "install_flavor" => "oracle",
