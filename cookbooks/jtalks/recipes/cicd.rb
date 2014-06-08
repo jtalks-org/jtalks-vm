@@ -1,4 +1,5 @@
 include_recipe "database::mysql"
+include_recipe "jtalks::configure_nginx"
 
 package "python-dev" do
  action :install
@@ -46,4 +47,3 @@ mysql_database 'antarcticle' do
   encoding 'utf8'
   action :create
 end
-

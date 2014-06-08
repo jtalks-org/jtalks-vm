@@ -13,7 +13,7 @@ end
 Vagrant::Config.run do |config|
   config.vm.box = "precise32"
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
-  config.vm.forward_port 8080, 4000
+  config.vm.forward_port 80, 4000
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ['cookbooks', 'cookbooks-dependencies']
@@ -32,14 +32,16 @@ Vagrant::Config.run do |config|
       },
       :resolver => {
         :nameservers => ["8.8.8.8", "8.8.4.4"]
+      },
+      :nginx => {
+        :forum_site => "localhost"
       }
-
     })
     #updating package caches to install fresh soft
     chef.add_recipe("resolver")
     chef.add_recipe("apt-get")
-    chef.add_recipe("nginx")
     #installing software
+    chef.add_recipe("nginx")
     chef.add_recipe("java")
     chef.add_recipe("openssl::default")
     chef.add_recipe("mysql::server") #installs both client and server
