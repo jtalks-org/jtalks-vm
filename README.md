@@ -1,6 +1,8 @@
 JTalks Virtual Environment
 ==
 
+**CHEF PROVED TO BE AN UNRELYABLE TOOL AND WE'RE MOVING TO DOCKER, SEE OUR FIRST STEPS [HERE] (https://github.com/jtalks-org/jtalks-cicd).**
+
 If you want to start a brand new environment for JTalks with installed software using just a couple of commands - then this is what you're looking for. This project helps you to start a virtual environment using Vagrant + Chef scripts.
 
 In order to start one of JTalks component, you need to go through several steps.
